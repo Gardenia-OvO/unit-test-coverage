@@ -38,9 +38,11 @@ cd unit-test-coverage
 git clone git@github.com:Gardenia-OvO/unit-test-coverage.git
 ```
 
+**拉不下来怎么办**：如果 clone 卡住不动，或者报 `SSL_ERROR_SYSCALL` / `Connection timed out`，是这个网络连 `github.com:443` 不稳，换上面那条 SSH 命令重试；装了 GitHub CLI 的话 `gh repo clone Gardenia-OvO/unit-test-coverage` 也行。多试两次通常就好。
+
 > **公开只解决「能拉」，不解决「能推」。**
 > 要往仓库里提交，仍然需要自己的 GitHub 账号，并且被组长加进协作者。
-> 完全没有账号的同学，直接看第六节兜底。
+> 完全没有账号的同学，直接看第六节。
 
 ---
 
