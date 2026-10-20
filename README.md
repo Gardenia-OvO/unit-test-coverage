@@ -6,6 +6,50 @@
 
 ---
 
+## 零、Windows 同学先看
+
+**除了组长，其余同学都是 Windows。** 下面六件事配好，后面文档里的命令才能照抄。
+
+### 1. 装 Git for Windows（自带 Git Bash）
+
+下载 https://git-scm.com/download/win ，一路下一步即可。
+
+装完在开始菜单里找 **Git Bash** —— **所有文档里的命令都在 Git Bash 里敲**，不要用 PowerShell。
+原因：文档里的 `find`、`grep`、`for ... do ... done` 都是 bash 语法，PowerShell 里不认。
+
+### 2. 一行命令修掉中文文件名乱码
+
+```bash
+git config --global core.quotepath false
+```
+
+不设的话，`git status` 里中文文件名会显示成 `\346\241\210\344\276\213...` 这种东西。本仓库文件名全是中文，不设会很难受。
+
+### 3. 装 JDK
+
+到 https://adoptium.net 下 Temurin **21** 或 **25**，安装时勾选设置 `JAVA_HOME`。
+
+### 4. 装 Maven（重要，别用老版本）
+
+*   到 https://maven.apache.org/download.cgi 下 `apache-maven-3.9.x-bin.zip`
+*   解压到比如 `C:\tools\apache-maven-3.9.9`
+*   把这个目录下的 `bin` 加进系统 PATH
+*   重开 Git Bash，`mvn -v` 第一行要显示 **3.9.x**
+
+也可以用 `winget install Apache.Maven`。
+
+> **系统里如果有老的 Maven（3.5 / 3.6），不要用。** 这个工程的插件要求 3.6.3 以上，老版本会报各种各样的插件错误。
+
+### 5. 换行符不用管
+
+仓库里已经放了 `.gitattributes`，Windows 和 macOS 提交时不会互相把整个文件标成改动。**不用去设 `core.autocrlf`。**
+
+### 6. 打开文件
+
+Git Bash 里用 `start 文件名`，或者在资源管理器里双击。
+
+---
+
 ## 一、每个人只碰自己的文件
 
 | 谁 | 只改这里的 | 别碰 |
