@@ -51,6 +51,9 @@ mvn test -Dtest='*LlmBTest'
 
 首次使用时，请先安装并正确配置 JDK 和 Maven。
 
+Maven 中央仓库下不下来依赖项的直接在群里下我发的包
+IDE 里 Settings → Build Tools → Maven → User settings file，勾 Override，指到相应settings
+
 进入项目根目录后，先执行以下命令验证环境：
 
 ```bash
