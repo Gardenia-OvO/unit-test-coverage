@@ -1,31 +1,68 @@
-# java-project
 
-工程本体放这里。**由组员 2 搭建，其他人不要动这个文件。**
+### 一、实验环境
 
-## 怎么把项目放进来
+- JDK 版本：21.0.12.1
+- Maven 版本：3.9.16
+- JaCoCo 版本：0.8.15
+- 项目 Commit：d9b86d1992b8bd4cadbd832822c792628117e69d
 
-**先记版本号，再删 `.git`**，顺序错了就拿不到 commit 号了：
+### 二、pom.xml 修改说明
+
+1. 已删除 Maven Compiler Plugin 中的 `<arg>-Werror</arg>`，保留 `<arg>-Xlint:all</arg>`。原因是避免将编译警告直接视为编译失败，影响测试代码可编译性的统计。
+2. JUnit 版本：老师要求使用 JUnit 5，将版本改成 5.13.4后可行。
+3. JaCoCo 使用项目原有的 0.8.15 配置，保留已有的 `prepare-agent` 和 `report` 配置，不重复添加插件。
+
+### 三、四组测试运行命令
+
+#### 1. 人工测试组 A
 
 ```bash
-cd java-project
-git clone https://github.com/TheAlgorithms/Java.git .
-git log -1 --format=%H      # ← 记下这 40 位
-rm -rf .git                  # 去掉它自己的历史，让它成为本仓库的普通目录
+mvn test -Dtest='*ManualTest'
 ```
 
-之后的配置（删 `-Werror`、确认 JaCoCo 已在 pom、跑 `mvn test`）见 `docs/00-组员分工说明.docx` 第一章。
+#### 2. 数据集自带测试组 B
 
-## 四组测试放哪
-
-都放 `src/test/java`，**与被测类同一个包**，靠类名后缀区分：
-
-```
-src/test/java/com/thealgorithms/maths/
-├── GCDTest.java             ← 仓库原有，保留不动
-├── GCDDatasetTest.java      ← 组员 4
-├── GCDManualTest.java       ← 组员 5 / 6
-├── GCDLlmATest.java         ← 组员 7
-└── GCDLlmBTest.java         ← 组员 7
+```bash
+mvn test -Dtest='*DatasetTest'
 ```
 
-`target/` 不用提交，`.gitignore` 已经排除了。
+#### 3. 模型 A 测试组 C
+
+```bash
+mvn test -Dtest='*LlmATest'
+```
+
+#### 4. 模型 B 测试组 D
+
+```bash
+mvn test -Dtest='*LlmBTest'
+```
+
+### 四、覆盖率报告
+
+运行测试后，JaCoCo 覆盖率报告路径为：
+
+`target/site/jacoco/index.html`
+
+使用浏览器打开该文件，可以查看代码行覆盖率和分支覆盖率。
+![img.png](img.png)
+
+### 五、说明
+
+首次使用时，请先安装并正确配置 JDK 和 Maven。
+
+Maven 中央仓库下不下来依赖项的直接在群里下我发的包
+IDE 里 Settings → Build Tools → Maven → User settings file，勾 Override，指到相应settings
+
+进入项目根目录后，先执行以下命令验证环境：
+
+```bash
+mvn test
+```
+第一次运行需要下载依赖，可能需要几分钟。
+运行结束后，重点看最后的输出：
+- BUILD SUCCESS：Maven 构建成功。
+- BUILD FAILURE：构建失败，需要看报错。
+- 测试报告中出现 Failures: 0、Errors: 0：说明这次执行的测试没有失败或报错。
+
+需要单独运行某一组测试时，使用上面的分组命令。测试结果和覆盖率数据以实际运行结果为准。
