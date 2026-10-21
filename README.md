@@ -1,85 +1,169 @@
-# The Algorithms - Java
+# 课题 2：单元测试框架与覆盖率分析
 
-[![Build](https://github.com/TheAlgorithms/Java/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/TheAlgorithms/Java/actions/workflows/build.yml)
-[![codecov](https://codecov.io/gh/TheAlgorithms/Java/graph/badge.svg?token=XAdPyqTIqR)](https://codecov.io/gh/TheAlgorithms/Java)
-[![Discord chat](https://img.shields.io/discord/808045925556682782.svg?logo=discord&colorB=7289DA&style=flat-square)](https://discord.gg/c7MnfGFGa6)
-[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/TheAlgorithms/Java)
+8 人小组作业。核心内容：JUnit 5 + JaCoCo 环境搭建，以及对四组测试用例（人工 / 数据集自带 / 两个大模型）的对照实验。
 
+**答辩时间：2026-10-30（周五）**
 
-You can run and edit the algorithms, or contribute to them using Gitpod.io (a free online development environment) with a single click.
+---
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/TheAlgorithms/Java)
+## 零、Windows 同学先看
 
-### All algorithms are implemented in Java (for educational purposes)
-These implementations are intended for learning purposes. As such, they may be less efficient than the Java standard library.
+**除了组长，其余同学都是 Windows。** 下面六件事配好，后面文档里的命令才能照抄。
 
-## Contribution Guidelines
-Please read our [Contribution Guidelines](CONTRIBUTING.md) before you contribute to this project.
+### 1. 装 Git for Windows（自带 Git Bash）
 
-## Algorithms
-Our [directory](DIRECTORY.md) has the full list of applications.
+下载 https://git-scm.com/download/win ，一路下一步即可。
 
-### 一、实验环境
+装完在开始菜单里找 **Git Bash** —— **所有文档里的命令都在 Git Bash 里敲**，不要用 PowerShell。
+原因：文档里的 `find`、`grep`、`for ... do ... done` 都是 bash 语法，PowerShell 里不认。
 
-- JDK 版本：21.0.12.1
-- Maven 版本：3.9.16
-- JaCoCo 版本：0.8.15
-- 项目 Commit：d9b86d1992b8bd4cadbd832822c792628117e69d
-
-### 二、pom.xml 修改说明
-
-1. 已删除 Maven Compiler Plugin 中的 `<arg>-Werror</arg>`，保留 `<arg>-Xlint:all</arg>`。原因是避免将编译警告直接视为编译失败，影响测试代码可编译性的统计。
-2. JUnit 版本：老师要求使用 JUnit 5，将版本改成 5.13.4后可行。
-3. JaCoCo 使用项目原有的 0.8.15 配置，保留已有的 `prepare-agent` 和 `report` 配置，不重复添加插件。
-
-### 三、四组测试运行命令
-
-#### 1. 人工测试组 A
+### 2. 一行命令修掉中文文件名乱码
 
 ```bash
-mvn test -Dtest='*ManualTest'
+git config --global core.quotepath false
 ```
 
-#### 2. 数据集自带测试组 B
+不设的话，`git status` 里中文文件名会显示成 `\346\241\210\344\276\213...` 这种东西。本仓库文件名全是中文，不设会很难受。
+
+### 3. 装 JDK
+
+到 https://adoptium.net 下 Temurin **21** 或 **25**，安装时勾选设置 `JAVA_HOME`。
+
+### 4. 装 Maven（重要，别用老版本）
+
+*   到 https://maven.apache.org/download.cgi 下 `apache-maven-3.9.x-bin.zip`
+*   解压到比如 `C:\tools\apache-maven-3.9.9`
+*   把这个目录下的 `bin` 加进系统 PATH
+*   重开 Git Bash，`mvn -v` 第一行要显示 **3.9.x**
+
+也可以用 `winget install Apache.Maven`。
+
+> **系统里如果有老的 Maven（3.5 / 3.6），不要用。** 这个工程的插件要求 3.6.3 以上，老版本会报各种各样的插件错误。
+
+### 5. 换行符不用管
+
+仓库里已经放了 `.gitattributes`，Windows 和 macOS 提交时不会互相把整个文件标成改动。**不用去设 `core.autocrlf`。**
+
+### 6. 打开文件
+
+Git Bash 里用 `start 文件名`，或者在资源管理器里双击。
+
+---
+
+## 一、每个人只碰自己的文件
+
+| 谁 | 只改这里的 | 别碰 |
+|---|---|---|
+| 组长 | `report/`、`README.md`、合并 PPT | 别人的代码 |
+| 组员 2 | `java-project/` 的 `pom.xml`、根目录 `README` 里的命令 | 其他人的测试文件 |
+| 组员 3 | `docs/04-数据总表.xlsx` | 别人的表 |
+| 组员 4 | `docs/01-案例清单.xlsx` + 20 个 `*DatasetTest.java` | 别人的测试文件 |
+| 组员 5 | `docs/02a-人工耗时-组员5.xlsx` + 10 个 `*ManualTest.java` | 组员 6 的表和文件 |
+| 组员 6 | `docs/02b-人工耗时-组员6.xlsx` + 10 个 `*ManualTest.java` | 组员 5 的表和文件 |
+| 组员 7 | `docs/03-Prompt原文.md` + 40 个 `*LlmATest.java` / `*LlmBTest.java` | `pom.xml` |
+| 组员 8 | `docs/05-工具调研.md`、`slides/` | 别人的 md |
+
+`docs/00-组员分工说明.docx` 是总说明，每人先读自己那一章。**这份文档要改由组长统一改，改完提交。**
+
+---
+
+## 二、第一次：把仓库拉下来
+
+仓库是**公开**的，**不需要 GitHub 账号、不用登录**就能拉：
 
 ```bash
-mvn test -Dtest='*DatasetTest'
+git clone https://github.com/Gardenia-OvO/unit-test-coverage.git
+cd unit-test-coverage
 ```
 
-#### 3. 模型 A 测试组 C
+配过 SSH 的同学也可以用这条（这条需要账号）：
 
 ```bash
-mvn test -Dtest='*LlmATest'
+git clone git@github.com:Gardenia-OvO/unit-test-coverage.git
 ```
 
-#### 4. 模型 B 测试组 D
+**拉不下来怎么办**：如果 clone 卡住不动，或者报 `SSL_ERROR_SYSCALL` / `Connection timed out`，是这个网络连 `github.com:443` 不稳，换上面那条 SSH 命令重试；装了 GitHub CLI 的话 `gh repo clone Gardenia-OvO/unit-test-coverage` 也行。多试两次通常就好。
+
+> **公开只解决「能拉」，不解决「能推」。**
+> 要往仓库里提交，仍然需要自己的 GitHub 账号，并且被组长加进协作者。
+> 完全没有账号的同学，直接看第六节。
+
+---
+
+## 三、每次交东西之前：先拉
 
 ```bash
-mvn test -Dtest='*LlmBTest'
+git pull
 ```
 
-### 四、覆盖率报告
+**这一步每天第一次干活前必须做。** 不做就会在提交时冲突，处理起来比拉一下麻烦十倍。
 
-运行测试后，JaCoCo 覆盖率报告路径为：
+**顺序很重要**，永远是：
 
-`target/site/jacoco/index.html`
+```
+改文件 → git add → git commit → git pull → git push
+```
 
-使用浏览器打开该文件，可以查看代码行覆盖率和分支覆盖率。
-![img.png](img.png)
+不要在还有没提交的改动时直接 pull——git 可能拒绝合并，报一堆看不懂的话。
 
-### 五、说明
+**push 被拒（`! [rejected] ... fetch first`）不是出错，是常态。** 七个人共用一个分支，你写代码的这段时间里有人推过，你就会撞上。处理办法就是 `git pull` 再 `git push`。
 
-首次使用时，请先安装并正确配置 JDK 和 Maven。
+> **永远不要 `git push -f`**——那会把别人的提交直接冲掉。
 
-进入项目根目录后，先执行以下命令验证环境：
+---
+
+## 四、交东西：只提交自己的文件
+
+以组员 5 为例（其他人照着自己的目录改）：
 
 ```bash
-mvn test
+git pull
+git add java-project/src/test/java/com/thealgorithms/maths/GCDManualTest.java
+git add "docs/02a-人工耗时-组员5.xlsx"
+git commit -m "组员5：提交 10 个人工测试与耗时表"
+git push
 ```
-第一次运行需要下载依赖，可能需要几分钟。
-运行结束后，重点看最后的输出：
-- BUILD SUCCESS：Maven 构建成功。
-- BUILD FAILURE：构建失败，需要看报错。
-- 测试报告中出现 Failures: 0、Errors: 0：说明这次执行的测试没有失败或报错。
 
-需要单独运行某一组测试时，使用上面的分组命令。测试结果和覆盖率数据以实际运行结果为准。
+如果 `git push` 报 `rejected`，说明别人刚推过东西，执行：
+
+```bash
+git pull
+git push
+```
+
+---
+
+## 五、四条禁令
+
+1. **不要 `git add .`** —— 会把别人的半成品、你自己的 `target/` 统统带上。
+2. **不要 `git push -f`** —— 会覆盖掉别人的提交，直接弄丢工作。
+3. **不要改别人的文件**。要改先在群里说一声。
+4. **不要提交 `target/` 目录**（`.gitignore` 已经挡掉了，但别手动加）。
+
+---
+
+## 六、注册账号并加入仓库
+
+所有人统一用 git 提交。**首次使用，照 [`docs/06-新成员加入指南.md`](docs/06-新成员加入指南.md) 做完三件事**：注册账号 → 接受邀请 → 配一次 Token（第一次 push 弹密码框，粘的是 Token，不是账号密码）。
+
+网络打不开 github.com、实在注册不了的：把东西打成 `组员X-任务名.zip` 发群里，组长代提，提交信息注明「代提：组员X」。
+
+> ⚠️ 仓库是公开的。提交记录和表格里的名字写「组员 5」这种编号，**真名写在纸质报告里**，不要写进仓库。
+
+---
+
+## 目录说明
+
+```
+├── docs/
+│   ├── 00-组员分工说明.docx   ★ 每人先读自己那一章
+│   ├── 01-案例清单.xlsx       组员 4
+│   ├── 02a/02b-人工耗时.xlsx  组员 5 / 6 各一份
+│   ├── 03-Prompt原文.md       组员 7
+│   ├── 04-数据总表.xlsx       组员 3
+│   ├── 05-工具调研.md         组员 8
+│   └── 06-新成员加入指南.md   账号、Token、报错对照表
+├── java-project/   TheAlgorithms/Java 工程（组员 2 搭建）
+├── slides/         答辩 PPT
+└── report/         最终报告（组长）
+```
