@@ -17,3 +17,7 @@ target/
 # 临时文件
 *.log
 ~$*
+
+# 大模型 API key，绝不提交
+.env
+*.key
