@@ -38,6 +38,8 @@ LOG_DIR = os.path.join(REPO, "docs", "raw")
 # ----------------------------------------------------------------------------
 # 模型配置：两款都必须走 OpenAI 兼容接口，参数才能固定并记录
 # ----------------------------------------------------------------------------
+DEBUG = False
+
 MODELS = {
     "A": {
         "label": "模型A",
@@ -146,10 +148,17 @@ def call_api(cfg, prompt):
     with urllib.request.urlopen(req, timeout=180) as resp:
         data = json.loads(resp.read().decode("utf-8"))
 
+    if DEBUG:
+        import sys as _sys
+        print("---- 原始响应 ----", file=_sys.stderr)
+        print(json.dumps(data, ensure_ascii=False, indent=2)[:3000], file=_sys.stderr)
+        print("------------------", file=_sys.stderr)
+
     text = data["choices"][0]["message"]["content"]
     usage = data.get("usage") or {}
     meta = {
         "returned_model": data.get("model", ""),
+        "finish_reason": (data["choices"][0].get("finish_reason") or ""),
         "prompt_tokens": usage.get("prompt_tokens", ""),
         "completion_tokens": usage.get("completion_tokens", ""),
     }
@@ -188,8 +197,11 @@ def main():
     ap.add_argument("--model", required=True, choices=["A", "B"])
     ap.add_argument("--only", nargs="*", help="只跑指定类名")
     ap.add_argument("--dry-run", action="store_true", help="只拼 Prompt，不调接口")
+    ap.add_argument("--debug", action="store_true", help="打印原始响应，排查截断问题")
     args = ap.parse_args()
 
+    global DEBUG
+    DEBUG = args.debug
     cfg = MODELS[args.model]
     suffix = cfg["suffix"]
     cases = load_cases()
@@ -205,7 +217,7 @@ def main():
     if new_log:
         writer.writerow([
             "案例", "模型代号", "厂商标识", "请求模型名", "返回模型名",
-            "temperature", "top_p", "max_tokens",
+            "temperature", "top_p", "max_tokens", "finish_reason",
             "请求时间", "prompt_tokens", "completion_tokens", "状态",
         ])
 
@@ -234,7 +246,7 @@ def main():
                 f.write(code)
             writer.writerow([
                 fqcn, args.model, cfg["vendor"], cfg["model"], meta["returned_model"],
-                cfg["temperature"], cfg["top_p"], cfg["max_tokens"], ts,
+                cfg["temperature"], cfg["top_p"], cfg["max_tokens"], meta["finish_reason"], ts,
                 meta["prompt_tokens"], meta["completion_tokens"], "ok",
             ])
             print("  ✓ %-58s -> %s" % (fqcn, os.path.basename(out_path)))
@@ -242,12 +254,12 @@ def main():
         except urllib.error.HTTPError as e:
             detail = e.read().decode("utf-8", "ignore")[:200]
             writer.writerow([fqcn, args.model, cfg["vendor"], cfg["model"], "", cfg["temperature"],
-                             cfg["top_p"], cfg["max_tokens"], ts, "", "", "HTTP %s %s" % (e.code, detail)])
+                             cfg["top_p"], cfg["max_tokens"], "", ts, "", "", "HTTP %s %s" % (e.code, detail)])
             print("  ✗ %-58s HTTP %s" % (fqcn, e.code))
             失败 += 1
         except Exception as e:
             writer.writerow([fqcn, args.model, cfg["vendor"], cfg["model"], "", cfg["temperature"],
-                             cfg["top_p"], cfg["max_tokens"], ts, "", "", "ERR %s" % e])
+                             cfg["top_p"], cfg["max_tokens"], "", ts, "", "", "ERR %s" % e])
             print("  ✗ %-58s %s" % (fqcn, e))
             失败 += 1
 
