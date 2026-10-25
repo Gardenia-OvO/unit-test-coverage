@@ -41,27 +41,31 @@ LOG_DIR = os.path.join(REPO, "docs", "raw")
 MODELS = {
     "A": {
         "label": "模型A",
-        "vendor": "DeepSeek",
-        "base_url": "https://api.deepseek.com",
-        "model": "deepseek-chat",
-        "key_env": "DEEPSEEK_API_KEY",
-        "temperature": 0.0,
-        "top_p": 1.0,
-        "max_tokens": 4096,
+        "vendor": "月之暗面 Kimi",
+        "base_url": "https://ark.cn-beijing.volces.com/api/v3",
+        "model": "kimi-k3-1-pro",
+        "key_env": "ARK_API_KEY",
+        "temperature": 1.0,      # 方舟该模型强制固定值，先按控制台文档填写
+        "top_p": 1.0,            # 同上
+        "max_tokens": 8192,
         "suffix": "LlmATest",
     },
     "B": {
         "label": "模型B",
-        "vendor": "阿里通义千问",
-        "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
-        "model": "qwen-max",
-        "key_env": "DASHSCOPE_API_KEY",
-        "temperature": 0.0,
-        "top_p": 1.0,
-        "max_tokens": 4096,
+        "vendor": "DeepSeek",
+        "base_url": "https://ark.cn-beijing.volces.com/api/v3",
+        "model": "deepseek-v4-1-flash-economy",
+        "key_env": "ARK_API_KEY",
+        "temperature": 1.0,      # 同上
+        "top_p": 1.0,            # 同上
+        "max_tokens": 8192,
         "suffix": "LlmBTest",
     },
 }
+
+# 说明：temperature / top_p 必须与控制台文档一致。
+# 若某模型强制固定值，就照实填那个值，并在报告里注明「平台强制固定」。
+# 若换成官方直连（DeepSeek / Moonshot），把 base_url 和 model 换掉即可。
 
 # ----------------------------------------------------------------------------
 # Prompt 模板：与 docs/03-Prompt原文.md 必须逐字一致，改这里就同步改那里
