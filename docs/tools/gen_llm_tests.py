@@ -46,10 +46,10 @@ MODELS = {
         "label": "模型A",
         "vendor": "月之暗面 Kimi",
         "base_url": "https://ark.cn-beijing.volces.com/api/v3",
-        "model": "kimi-k3-1-pro",
+        "model": "kimi-k3-1-pro-261024",
         "key_env": "ARK_API_KEY",
         "temperature": 1.0,      # 方舟该模型强制固定值，先按控制台文档填写
-        "top_p": 1.0,            # 同上
+        "top_p": 0.95,            # 同上
         "max_tokens": 8192,
         "suffix": "LlmATest",
     },
@@ -57,10 +57,10 @@ MODELS = {
         "label": "模型B",
         "vendor": "DeepSeek",
         "base_url": "https://ark.cn-beijing.volces.com/api/v3",
-        "model": "deepseek-v4-1-flash-economy",
+        "model": "deepseek-v4-1-flash-economy-261017",
         "key_env": "ARK_API_KEY",
         "temperature": 1.0,      # 同上
-        "top_p": 1.0,            # 同上
+        "top_p": 0.95,            # 同上
         "max_tokens": 8192,
         "suffix": "LlmBTest",
     },

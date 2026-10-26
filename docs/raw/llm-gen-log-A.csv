@@ -1,1 +1,38 @@
 ﻿案例,模型代号,厂商标识,请求模型名,返回模型名,temperature,top_p,max_tokens,请求时间,prompt_tokens,completion_tokens,状态
+com.thealgorithms.maths.GCD,A,月之暗面 Kimi,kimi-k3-1-pro-261024,kimi-k3-1-pro-261024,1.0,0.95,8192,stop,2026-10-26 13:42:45,893,4712,ok
+com.thealgorithms.maths.FibonacciLoop,A,月之暗面 Kimi,kimi-k3-1-pro-261024,kimi-k3-1-pro-261024,1.0,0.95,8192,stop,2026-10-26 13:45:50,880,2638,ok
+com.thealgorithms.maths.Prime.PrimeCheck,A,月之暗面 Kimi,kimi-k3-1-pro-261024,kimi-k3-1-pro-261024,1.0,0.95,8192,stop,2026-10-26 13:47:33,967,3214,ok
+com.thealgorithms.maths.SieveOfEratosthenes,A,月之暗面 Kimi,kimi-k3-1-pro-261024,kimi-k3-1-pro-261024,1.0,0.95,8192,stop,2026-10-26 13:49:47,992,2776,ok
+com.thealgorithms.searches.BinarySearch,A,月之暗面 Kimi,kimi-k3-1-pro-261024,kimi-k3-1-pro-261024,1.0,0.95,8192,stop,2026-10-26 13:51:45,1886,2581,ok
+com.thealgorithms.searches.LinearSearch,A,月之暗面 Kimi,kimi-k3-1-pro-261024,kimi-k3-1-pro-261024,1.0,0.95,8192,stop,2026-10-26 13:53:28,993,2132,ok
+com.thealgorithms.searches.InterpolationSearch,A,月之暗面 Kimi,kimi-k3-1-pro-261024,kimi-k3-1-pro-261024,1.0,0.95,8192,stop,2026-10-26 13:55:04,853,4568,ok
+com.thealgorithms.searches.KMPSearch,A,月之暗面 Kimi,kimi-k3-1-pro-261024,,1.0,0.95,8192,,2026-10-26 13:57:51,,,ERR The read operation timed out
+com.thealgorithms.strings.ReverseString,A,月之暗面 Kimi,kimi-k3-1-pro-261024,kimi-k3-1-pro-261024,1.0,0.95,8192,stop,2026-10-26 14:01:13,1068,2838,ok
+com.thealgorithms.strings.Palindrome,A,月之暗面 Kimi,kimi-k3-1-pro-261024,kimi-k3-1-pro-261024,1.0,0.95,8192,stop,2026-10-26 14:02:58,898,3618,ok
+com.thealgorithms.strings.CountWords,A,月之暗面 Kimi,kimi-k3-1-pro-261024,kimi-k3-1-pro-261024,1.0,0.95,8192,stop,2026-10-26 14:05:22,773,4531,ok
+com.thealgorithms.strings.LongestCommonPrefix,A,月之暗面 Kimi,kimi-k3-1-pro-261024,kimi-k3-1-pro-261024,1.0,0.95,8192,stop,2026-10-26 14:07:51,669,1376,ok
+com.thealgorithms.sorts.InsertionSort,A,月之暗面 Kimi,kimi-k3-1-pro-261024,,1.0,0.95,8192,,2026-10-26 14:08:59,,,ERR The read operation timed out
+com.thealgorithms.sorts.BubbleSort,A,月之暗面 Kimi,kimi-k3-1-pro-261024,kimi-k3-1-pro-261024,1.0,0.95,8192,stop,2026-10-26 14:12:21,684,1998,ok
+com.thealgorithms.maths.DeterminantOfMatrix,A,月之暗面 Kimi,kimi-k3-1-pro-261024,kimi-k3-1-pro-261024,1.0,0.95,8192,stop,2026-10-26 14:13:38,721,4038,ok
+com.thealgorithms.maths.ExtendedEuclideanAlgorithm,A,月之暗面 Kimi,kimi-k3-1-pro-261024,kimi-k3-1-pro-261024,1.0,0.95,8192,stop,2026-10-26 14:15:47,806,4895,ok
+com.thealgorithms.misc.MedianOfRunningArray,A,月之暗面 Kimi,kimi-k3-1-pro-261024,,1.0,0.95,8192,,2026-10-26 14:18:20,,,ERR The read operation timed out
+com.thealgorithms.maths.QuadraticEquationSolver,A,月之暗面 Kimi,kimi-k3-1-pro-261024,kimi-k3-1-pro-261024,1.0,0.95,8192,stop,2026-10-26 14:21:42,862,5406,ok
+com.thealgorithms.maths.SumOfDigits,A,月之暗面 Kimi,kimi-k3-1-pro-261024,kimi-k3-1-pro-261024,1.0,0.95,8192,stop,2026-10-26 14:24:47,693,4048,ok
+com.thealgorithms.searches.JumpSearch,A,月之暗面 Kimi,kimi-k3-1-pro-261024,kimi-k3-1-pro-261024,1.0,0.95,8192,stop,2026-10-26 14:27:14,1210,4452,ok
+com.thealgorithms.datastructures.lists.SortedLinkedList,A,月之暗面 Kimi,kimi-k3-1-pro-261024,kimi-k3-1-pro-261024,1.0,0.95,8192,stop,2026-10-26 14:29:41,1401,6430,ok
+com.thealgorithms.compression.LZ78,A,月之暗面 Kimi,kimi-k3-1-pro-261024,,1.0,0.95,8192,,2026-10-26 14:32:35,,,ERR The read operation timed out
+com.thealgorithms.dynamicprogramming.DamerauLevenshteinDistance,A,月之暗面 Kimi,kimi-k3-1-pro-261024,kimi-k3-1-pro-261024,1.0,0.95,8192,stop,2026-10-26 14:35:57,2071,5005,ok
+com.thealgorithms.bitmanipulation.BitRotate,A,月之暗面 Kimi,kimi-k3-1-pro-261024,,1.0,0.95,8192,,2026-10-26 14:38:56,,,ERR The read operation timed out
+com.thealgorithms.ciphers.PermutationCipher,A,月之暗面 Kimi,kimi-k3-1-pro-261024,,1.0,0.95,8192,,2026-10-26 14:42:18,,,ERR The read operation timed out
+com.thealgorithms.datastructures.stacks.StackOfLinkedList,A,月之暗面 Kimi,kimi-k3-1-pro-261024,kimi-k3-1-pro-261024,1.0,0.95,8192,stop,2026-10-26 14:45:40,1223,4451,ok
+com.thealgorithms.searches.KMPSearch,A,月之暗面 Kimi,kimi-k3-1-pro-261024,kimi-k3-1-pro-261024,1.0,0.95,8192,stop,2026-10-26 16:32:45,949,4412,ok
+com.thealgorithms.sorts.InsertionSort,A,月之暗面 Kimi,kimi-k3-1-pro-261024,kimi-k3-1-pro-261024,1.0,0.95,8192,stop,2026-10-26 16:37:32,1279,5378,ok
+com.thealgorithms.misc.MedianOfRunningArray,A,月之暗面 Kimi,kimi-k3-1-pro-261024,kimi-k3-1-pro-261024,1.0,0.95,8192,stop,2026-10-26 16:41:38,941,5466,ok
+com.thealgorithms.compression.LZ78,A,月之暗面 Kimi,kimi-k3-1-pro-261024,,1.0,0.95,8192,,2026-10-26 16:45:10,,,ERR The read operation timed out
+com.thealgorithms.bitmanipulation.BitRotate,A,月之暗面 Kimi,kimi-k3-1-pro-261024,,1.0,0.95,8192,,2026-10-26 16:49:34,,,ERR The read operation timed out
+com.thealgorithms.ciphers.PermutationCipher,A,月之暗面 Kimi,kimi-k3-1-pro-261024,,1.0,0.95,8192,,2026-10-26 16:54:34,,,ERR The read operation timed out
+com.thealgorithms.compression.LZ78,A,月之暗面 Kimi,kimi-k3-1-pro-261024,kimi-k3-1-pro-261024,1.0,0.95,8192,stop,2026-10-26 16:58:34,1351,5174,ok
+com.thealgorithms.bitmanipulation.BitRotate,A,月之暗面 Kimi,kimi-k3-1-pro-261024,,1.0,0.95,8192,,2026-10-26 17:02:21,,,ERR The read operation timed out
+com.thealgorithms.ciphers.PermutationCipher,A,月之暗面 Kimi,kimi-k3-1-pro-261024,,1.0,0.95,8192,,2026-10-26 17:07:22,,,ERR The read operation timed out
+com.thealgorithms.bitmanipulation.BitRotate,A,月之暗面 Kimi,kimi-k3-1-pro-261024,,1.0,0.95,8192,,2026-10-26 17:47:14,,,ERR The read operation timed out
+com.thealgorithms.ciphers.PermutationCipher,A,月之暗面 Kimi,kimi-k3-1-pro-261024,,1.0,0.95,8192,,2026-10-26 17:51:09,,,ERR The read operation timed out

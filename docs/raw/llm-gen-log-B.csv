@@ -1,0 +1,27 @@
+﻿案例,模型代号,厂商标识,请求模型名,返回模型名,temperature,top_p,max_tokens,finish_reason,请求时间,prompt_tokens,completion_tokens,状态
+com.thealgorithms.maths.GCD,B,DeepSeek,deepseek-v4-1-flash-economy-261017,deepseek-v4-1-flash-economy-261017,1.0,0.95,8192,stop,2026-10-26 12:36:54,827,4035,ok
+com.thealgorithms.maths.FibonacciLoop,B,DeepSeek,deepseek-v4-1-flash-economy-261017,deepseek-v4-1-flash-economy-261017,1.0,0.95,8192,stop,2026-10-26 12:38:06,816,2011,ok
+com.thealgorithms.maths.Prime.PrimeCheck,B,DeepSeek,deepseek-v4-1-flash-economy-261017,deepseek-v4-1-flash-economy-261017,1.0,0.95,8192,stop,2026-10-26 12:38:55,916,6146,ok
+com.thealgorithms.maths.SieveOfEratosthenes,B,DeepSeek,deepseek-v4-1-flash-economy-261017,deepseek-v4-1-flash-economy-261017,1.0,0.95,8192,stop,2026-10-26 12:40:36,923,3598,ok
+com.thealgorithms.searches.BinarySearch,B,DeepSeek,deepseek-v4-1-flash-economy-261017,deepseek-v4-1-flash-economy-261017,1.0,0.95,8192,stop,2026-10-26 12:41:44,1831,2273,ok
+com.thealgorithms.searches.LinearSearch,B,DeepSeek,deepseek-v4-1-flash-economy-261017,deepseek-v4-1-flash-economy-261017,1.0,0.95,8192,stop,2026-10-26 12:42:47,936,2771,ok
+com.thealgorithms.searches.InterpolationSearch,B,DeepSeek,deepseek-v4-1-flash-economy-261017,deepseek-v4-1-flash-economy-261017,1.0,0.95,8192,stop,2026-10-26 12:43:45,793,5707,ok
+com.thealgorithms.searches.KMPSearch,B,DeepSeek,deepseek-v4-1-flash-economy-261017,deepseek-v4-1-flash-economy-261017,1.0,0.95,8192,stop,2026-10-26 12:45:20,885,5535,ok
+com.thealgorithms.strings.ReverseString,B,DeepSeek,deepseek-v4-1-flash-economy-261017,deepseek-v4-1-flash-economy-261017,1.0,0.95,8192,stop,2026-10-26 12:46:52,988,3246,ok
+com.thealgorithms.strings.Palindrome,B,DeepSeek,deepseek-v4-1-flash-economy-261017,deepseek-v4-1-flash-economy-261017,1.0,0.95,8192,stop,2026-10-26 12:47:59,824,3012,ok
+com.thealgorithms.strings.CountWords,B,DeepSeek,deepseek-v4-1-flash-economy-261017,deepseek-v4-1-flash-economy-261017,1.0,0.95,8192,stop,2026-10-26 12:49:01,724,3686,ok
+com.thealgorithms.strings.LongestCommonPrefix,B,DeepSeek,deepseek-v4-1-flash-economy-261017,deepseek-v4-1-flash-economy-261017,1.0,0.95,8192,stop,2026-10-26 12:50:13,606,1629,ok
+com.thealgorithms.sorts.InsertionSort,B,DeepSeek,deepseek-v4-1-flash-economy-261017,deepseek-v4-1-flash-economy-261017,1.0,0.95,8192,stop,2026-10-26 12:50:58,1226,7611,ok
+com.thealgorithms.sorts.BubbleSort,B,DeepSeek,deepseek-v4-1-flash-economy-261017,deepseek-v4-1-flash-economy-261017,1.0,0.95,8192,stop,2026-10-26 12:53:02,630,2826,ok
+com.thealgorithms.maths.DeterminantOfMatrix,B,DeepSeek,deepseek-v4-1-flash-economy-261017,deepseek-v4-1-flash-economy-261017,1.0,0.95,8192,stop,2026-10-26 12:54:01,666,2813,ok
+com.thealgorithms.maths.ExtendedEuclideanAlgorithm,B,DeepSeek,deepseek-v4-1-flash-economy-261017,deepseek-v4-1-flash-economy-261017,1.0,0.95,8192,stop,2026-10-26 12:55:00,754,3427,ok
+com.thealgorithms.misc.MedianOfRunningArray,B,DeepSeek,deepseek-v4-1-flash-economy-261017,deepseek-v4-1-flash-economy-261017,1.0,0.95,8192,stop,2026-10-26 12:56:06,884,6649,ok
+com.thealgorithms.maths.QuadraticEquationSolver,B,DeepSeek,deepseek-v4-1-flash-economy-261017,deepseek-v4-1-flash-economy-261017,1.0,0.95,8192,stop,2026-10-26 13:25:23,800,4768,ok
+com.thealgorithms.maths.SumOfDigits,B,DeepSeek,deepseek-v4-1-flash-economy-261017,deepseek-v4-1-flash-economy-261017,1.0,0.95,8192,stop,2026-10-26 13:26:54,635,3298,ok
+com.thealgorithms.searches.JumpSearch,B,DeepSeek,deepseek-v4-1-flash-economy-261017,deepseek-v4-1-flash-economy-261017,1.0,0.95,8192,stop,2026-10-26 13:29:12,1150,3137,ok
+com.thealgorithms.datastructures.lists.SortedLinkedList,B,DeepSeek,deepseek-v4-1-flash-economy-261017,deepseek-v4-1-flash-economy-261017,1.0,0.95,8192,stop,2026-10-26 13:31:12,1337,6779,ok
+com.thealgorithms.compression.LZ78,B,DeepSeek,deepseek-v4-1-flash-economy-261017,deepseek-v4-1-flash-economy-261017,1.0,0.95,8192,stop,2026-10-26 13:33:09,1298,5330,ok
+com.thealgorithms.dynamicprogramming.DamerauLevenshteinDistance,B,DeepSeek,deepseek-v4-1-flash-economy-261017,deepseek-v4-1-flash-economy-261017,1.0,0.95,8192,stop,2026-10-26 13:34:48,2011,4949,ok
+com.thealgorithms.bitmanipulation.BitRotate,B,DeepSeek,deepseek-v4-1-flash-economy-261017,deepseek-v4-1-flash-economy-261017,1.0,0.95,8192,stop,2026-10-26 13:37:02,1084,4678,ok
+com.thealgorithms.ciphers.PermutationCipher,B,DeepSeek,deepseek-v4-1-flash-economy-261017,deepseek-v4-1-flash-economy-261017,1.0,0.95,8192,stop,2026-10-26 13:38:20,1747,5459,ok
+com.thealgorithms.datastructures.stacks.StackOfLinkedList,B,DeepSeek,deepseek-v4-1-flash-economy-261017,deepseek-v4-1-flash-economy-261017,1.0,0.95,8192,stop,2026-10-26 13:39:48,1168,3803,ok

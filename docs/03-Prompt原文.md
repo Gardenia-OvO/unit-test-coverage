@@ -6,14 +6,14 @@
 
 | 模型 | 精确版本号 | temperature | top_p | max_tokens | 联网 | 对话轮次 | 生成日期 |
 |---|---|---|---|---|---|---|---|
-| 模型 A |  |  |  |  | 关闭 | 1 轮 |  |
-| 模型 B |  |  |  |  | 关闭 | 1 轮 |  |
+| 模型 A | kimi-k3-1-pro-261024 | 1 | 0.95 | 8192 | 关闭 | 1 轮 | 2026/10/26 |
+| 模型 B | deepseek-v4-1-flash-economy- 261017 | 1 | 0.95 | 8192 | 关闭 | 1 轮 | 2026/10/26 |
 
 > 版本号每次生成都当场记。模型版本会悄悄更新，今天记的和三天后可能不一样。
 
 ## 二、完整 Prompt 原文
 
-> 20 个类都用这一份，只换【包名】和【被测类源码】两处，其余一个字不改。
+> 26个类都用这一份，只换【包名】和【被测类源码】两处，其余一个字不改。Prompt 模板由本小组设计，26 个案例使用完全相同的模板，仅替换包名和源码，未针对任何单个案例调整。
 
 ```
 你是一名资深 Java 测试工程师。请为下面这个 Java 类编写 JUnit 5 单元测试。
@@ -45,11 +45,66 @@
 
 ## 三、生成记录表
 
-| 序号 | 案例 | 模型 | 生成时间 | 编译通过 | 错误类型 | 是否人工改动 |
-|---|---|---|---|---|---|---|
-| 1 |  | A |  |  |  |  |
-| 2 |  | B |  |  |  |  |
-| … |  |  |  |  |  |  |
+| 序号 | 案例                       | 模型 | 生成时间 | 编译通过 | 错误类型 | 是否人工改动 |
+| ---- | -------------------------- | ---- | -------- | -------- | -------- | ------------ |
+| 1    | GCD                        | A    | 13:42    | 是       | OK       | 否           |
+| 2    | GCD                        | B    | 12:36    | 是       | OK       | 否           |
+| 3    | FibonacciLoop              | A    | 13:45    | 是       | OK       | 否           |
+| 4    | FibonacciLoop              | B    | 12:38    | 是       | OK       | 否           |
+| 5    | PrimeCheck                 | A    | 13:47    | 是       | OK       | 仅import     |
+| 6    | PrimeCheck                 | B    | 12:38    | 是       | OK       | 仅import     |
+| 7    | SieveOfEratosthenes        | A    | 13:49    | 是       | OK       | 否           |
+| 8    | SieveOfEratosthenes        | B    | 12:40    | 是       | OK       | 否           |
+| 9    | BinarySearch               | A    | 13:51    | 是       | OK       | 否           |
+| 10   | BinarySearch               | B    | 12:41    | 是       | OK       | 否           |
+| 11   | LinearSearch               | A    | 13:53    | 是       | OK       | 否           |
+| 12   | LinearSearch               | B    | 12:43    | 是       | OK       | 否           |
+| 13   | InterpolationSearch        | A    | 13:55    | 是       | OK       | 否           |
+| 14   | InterpolationSearch        | B    | 12:46    | 是       | OK       | 否           |
+| 15   | KMPSearch                  | A    | 16:32    | 是       | OK       | 否           |
+| 16   | KMPSearch                  | B    | 12:47    | 是       | OK       | 否           |
+| 17   | ReverseString              | A    | 14:01    | 是       | OK       | 否           |
+| 18   | ReverseString              | B    | 12:48    | 是       | OK       | 否           |
+| 19   | Palindrome                 | A    | 14:02    | 是       | OK       | 否           |
+| 20   | Palindrome                 | B    | 13:49    | 是       | OK       | 否           |
+| 21   | CountWords                 | A    | 14:05    | 是       | OK       | 否           |
+| 22   | CountWords                 | B    | 12:51    | 是       | OK       | 否           |
+| 23   | LongestCommonPrefix        | A    | 14:07    | 是       | OK       | 否           |
+| 24   | LongestCommonPrefix        | B    | 12:52    | 是       | OK       | 否           |
+| 25   | InsertionSort              | A    | 16:37    | 是       | OK       | 否           |
+| 26   | InsertionSort              | B    | 12:53    | 是       | OK       | 否           |
+| 27   | BubbleSort                 | A    | 14:12    | 是       | OK       | 否           |
+| 28   | BubbleSort                 | B    | 12:54    | 是       | OK       | 否           |
+| 29   | DeterminantOfMatrix        | A    | 14:13    | 是       | OK       | 否           |
+| 30   | DeterminantOfMatrix        | B    | 12:55    | 是       | OK       | 否           |
+| 31   | ExtendedEuclideanAlgorithm | A    | 14:15    | 是       | OK       | 否           |
+| 32   | ExtendedEuclideanAlgorithm | B    | 12:56    | 是       | OK       | 否           |
+| 33   | MedianOfRunningArray       | A    | 16:41    | 是       | OK       | 否           |
+| 34   | MedianOfRunningArray       | B    | 12:57    | 是       | OK       | 否           |
+| 35   | QuadraticEquationSolver    | A    | 14:21    | 是       | OK       | 否           |
+| 36   | QuadraticEquationSolver    | B    | 13:25    | 是       | OK       | 否           |
+| 37   | SumOfDigits                | A    | 14:24    | 是       | OK       | 否           |
+| 38   | SumOfDigits                | B    | 13:26    | 是       | OK       | 否           |
+| 39   | JumpSearch                 | A    | 14:27    | 是       | OK       | 否           |
+| 40   | JumpSearch                 | B    | 13:29    | 是       | OK       | 否           |
+| 41   | SortedLinkedList           | A    | 14:29    | 是       | OK       | 否           |
+| 42   | SortedLinkedList           | B    | 13:31    | 是       | OK       | 否           |
+| 43   | LZ78                       | A    | 16:58    | 是       | OK       | 否           |
+| 44   | LZ78                       | B    | 13:33    | 是       | OK       | 否           |
+| 45   | DamerauLevenshteinDistance | A    | 14:35    | 是       | OK       | 否           |
+| 46   | DamerauLevenshteinDistance | B    | 13:34    | 是       | OK       | 否           |
+| 47   | BitRotate                  | A    | 14:38    | 无产出   | TIMEOUT  | 否           |
+| 48   | BitRotate                  | B    | 13:37    | 是       | OK       | 否           |
+| 49   | PermutationCipher          | A    | 14:42    | 无产出   | TIMEOUT  | 否           |
+| 50   | PermutationCipher          | B    | 13:38    | 是       | OK       | 否           |
+| 51   | StackOfLinkedList          | A    | 14:45    | 是       | OK       | 否           |
+| 52   | StackOfLinkedList          | B    | 13:39    | 是       | OK       | 否           |
+
+### 记录说明
+
+- 全部请求均为**单轮**：每次调用独立发起，不携带历史上下文；失败重试为重新发送同一请求，不属于多轮对话。
+- **无产出**：该案例在 3 次尝试内均因服务端超时未返回内容，未生成测试文件。此情况不计入"编译失败"，编译通过列填「无产出」。
+- **仅 import**：因上游包名大小写不一致（被测类位于 `maths.Prime`，测试位于 `maths.prime`），在模型输出基础上仅补充了 `import` 语句，方法体未做任何修改。
 
 **允许改的只有两处**：类名（改成 XxxLlmATest）、包名。方法体一个字都不能动。
 **编译不过不许修**——编不过本身就是结论。
