@@ -19,6 +19,7 @@
 
 import argparse
 import csv
+import glob
 import json
 import os
 import re
@@ -112,6 +113,20 @@ def load_cases():
         pkg, _, cls = fqcn.rpartition(".")
         out.append((pkg, cls, fqcn))
     return out
+
+
+def resolve_test_package(pkg, cls):
+    """测试文件的目标包。
+
+    正常情况下与被测类同包；但上游存在大小写不一致的情况，
+    例如 PrimeCheck 位于 maths.Prime（大写），而它的测试在 maths.prime（小写）。
+    因此优先跟随已有 <Cls>Test.java 所在的包。
+    """
+    hits = glob.glob(os.path.join(TEST_DIR, "**", cls + "Test.java"), recursive=True)
+    if hits:
+        rel = os.path.relpath(os.path.dirname(hits[0]), TEST_DIR)
+        return "" if rel == "." else rel.replace(os.sep, ".")
+    return pkg
 
 
 def read_source(pkg, cls):
@@ -238,8 +253,9 @@ def main():
         ts = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         try:
             raw, meta = call_api(cfg, prompt)
-            code = normalize(extract_java(raw), pkg, cls, suffix)
-            out_dir = os.path.join(TEST_DIR, pkg.replace(".", os.sep))
+            out_pkg = resolve_test_package(pkg, cls)
+            code = normalize(extract_java(raw), out_pkg, cls, suffix)
+            out_dir = os.path.join(TEST_DIR, out_pkg.replace(".", os.sep))
             os.makedirs(out_dir, exist_ok=True)
             out_path = os.path.join(out_dir, "%s%s.java" % (cls, suffix))
             with open(out_path, "w", encoding="utf-8") as f:
