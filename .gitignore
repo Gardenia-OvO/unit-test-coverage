@@ -21,3 +21,7 @@ target/
 # 大模型 API key，绝不提交
 .env
 *.key
+
+# Python 缓存
+__pycache__/
+*.pyc
